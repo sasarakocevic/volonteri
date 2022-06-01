@@ -1,5 +1,8 @@
-Svaka od navedenih (projektom tazenih) funkcionalnosti mora biti posebno Git push-ovana na grani koja je dodijeljena za projekat u suprotnom zavrsni rad se nece bodovati. (Neprihvatiljvo je da sve funkcionalnosti budu u jednom git push-u)
+# Volonteri
 
+## Opis projekta
+
+Svaka od navedenih (projektom tazenih) funkcionalnosti mora biti posebno Git push-ovana na grani koja je dodijeljena za projekat u suprotnom zavrsni rad se nece bodovati. (Neprihvatiljvo je da sve funkcionalnosti budu u jednom git push-u)
 
 Aplikacija ima 2 segmenta:
 
@@ -30,3 +33,61 @@ Aplikacija ima 2 segmenta:
     Volonter moze biti i donator
 
     Administrator ima mogucnost ostaviti review akcije sa izmijenjenim statusom
+
+
+## API
+
+### User
+- POST /api/register
+- POST /api/login
+- POST /api/logout
+
+### Donacije
+
+```json
+{
+    "id": 1,
+    "naslov": "Donacija Prva",
+    "opis": "Ovo je opis donacije.",
+    "lokacija": "Lokacija",
+    "slike": [
+        {"id":1, "url": "http://..."},
+        {"id":2, "url": "http://..."}
+    ],
+    "status": "aktivna" // aktivna | zavrsena
+}
+```
+
+- GET /api/donacije
+- POST /api/donacije (ako nije ulogovan email je neophodan ```{"email":"a@b.c"}``` )
+- GET /api/donacije/{id}
+- PUT /api/donacije/{id} ```{"email":"a@b.c"}```
+- DELETE /api/donacije/{id} ```{"email":"a@b.c"}```
+
+
+- POST /api/donacije/{id}/slike
+- DELETE /api/donacije/{id}/slike/{id_slike}
+
+### Akcije
+
+```json
+{
+    "id": 1,
+    "naslov": "Naslov akcija",
+    "opis": "Ovo je duzi <h1>opis</h1> akcije.",
+    "vrijeme": "2022-06-01T08:37:59.981Z",
+    "brojVolontera": 5,
+    "status": "aktivna", // aktivna | neaktivna | zavrsena
+    "izvjestaj": "Izvjestaj koji postavlja administrator na zavrsenu akciju." // samo ako je status == zavrsena
+}
+```
+
+- GET /api/akcije
+- POST /api/akcije
+- GET /api/akcije/{id}
+- PUT /api/akcije/{id}
+- DELETE /api/akcije/{id}
+
+
+- POST /api/akcije/{id}/prijava
+- POST /api/akcije/{id}/odjava
