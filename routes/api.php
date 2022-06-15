@@ -19,6 +19,8 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function()
     Route::post('login', 'login');
 });
 
+Route::resource('donacije',\App\Http\Controllers\DonacijeController::class);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
