@@ -19,7 +19,10 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function()
     Route::post('login', 'login');
 });
 
-Route::resource('donacije',\App\Http\Controllers\DonacijeController::class);
+Route::get('donacije', [\App\Http\Controllers\DonacijeController::class, 'index']);
+Route::resource('donacije',\App\Http\Controllers\DonacijeController::class)->except([
+    'index', 'create', 'edit'
+]);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);

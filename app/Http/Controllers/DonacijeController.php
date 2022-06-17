@@ -14,11 +14,19 @@ class DonacijeController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Donacija::all();
+        $donacijeQuery = Donacija::with('slike');
+
+        // vrati samo svoje ako je ulogovan i ako ima ?mojeDonacije
+        if (auth('sanctum')->check() && $request->has('mojeDonacije')){
+            $donacijeQuery->where('donator',User::find(auth('sanctum')->user()->getAuthIdentifier())->email);
+        }
+
+        return $donacijeQuery->get();
     }
 
     /**
@@ -86,8 +94,8 @@ class DonacijeController extends Controller
         }
 
         $email = "";
-        if (auth('sanctum')->check()) {
-            if (!$this->isLoggedIn($donacija->donator)) {
+        if ($loggedInEmail = $this->getLoggedInEmail()) {
+            if ($donacija->donator != $loggedInEmail) {
                 return response()->json(['error' => 'nemate pravo promjene'], 403);
             }
         } elseif ($donacija->donator != $request->get("donator")) {
@@ -111,7 +119,7 @@ class DonacijeController extends Controller
             return response()->json(['error' => 'nema donacije'], 404);
         }
 
-        if (!$this->isLoggedIn($donacija->donator)) {
+        if ($donacija->donator != $this->getLoggedInEmail()) {
             return response()->json(['error' => 'nemate pravo brisanja' . $donacija->donator], 403);
         }
 
@@ -119,12 +127,11 @@ class DonacijeController extends Controller
         return response()->json(['success' => 'uspjesno obrisana donacija'], 200);
     }
 
-    public function isLoggedIn($email)
+    public function getLoggedInEmail()
     {
-        if (!auth('sanctum')->check()) return false;
-
+        if (!auth('sanctum')->check()) return null;
         $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
-        return $email == $user->email;
+        return $user->email;
 
     }
 }
