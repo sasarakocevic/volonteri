@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class DonacijeController extends Controller
@@ -69,7 +70,7 @@ class DonacijeController extends Controller
      */
     public function show($id)
     {
-        return Donacija::find($id);
+        return Donacija::with('slike')->find($id);
     }
 
     /**
@@ -93,8 +94,7 @@ class DonacijeController extends Controller
             return response()->json(['error' => 'nema donacije'], 404);
         }
 
-        $email = "";
-        if ($loggedInEmail = $this->getLoggedInEmail()) {
+        if ($loggedInEmail = AuthController::getLoggedInEmail()) {
             if ($donacija->donator != $loggedInEmail) {
                 return response()->json(['error' => 'nemate pravo promjene'], 403);
             }
@@ -119,19 +119,18 @@ class DonacijeController extends Controller
             return response()->json(['error' => 'nema donacije'], 404);
         }
 
-        if ($donacija->donator != $this->getLoggedInEmail()) {
-            return response()->json(['error' => 'nemate pravo brisanja' . $donacija->donator], 403);
+        // samo logovani korisnik moze brisati
+        if ($donacija->donator != AuthController::getLoggedInEmail()) {
+            return response()->json(['error' => 'nemate pravo brisanja'], 403);
         }
 
-        $donacija->delete($id);
+        $donacija->delete();
+
+        // izbrisi slike
+        Storage::deleteDirectory("public/donacije/$id");
+
         return response()->json(['success' => 'uspjesno obrisana donacija'], 200);
     }
 
-    public function getLoggedInEmail()
-    {
-        if (!auth('sanctum')->check()) return null;
-        $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
-        return $user->email;
 
-    }
 }

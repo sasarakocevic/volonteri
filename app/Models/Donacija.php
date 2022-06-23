@@ -26,4 +26,8 @@ class Donacija extends Model
         'opis',
         'status',
     ];
+
+    public function slike() {
+        return $this->hasMany(Slika::class, "donacija_id");
+    }
 }

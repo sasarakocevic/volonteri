@@ -19,7 +19,9 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function()
     Route::post('login', 'login');
 });
 
-Route::get('donacije', [\App\Http\Controllers\DonacijeController::class, 'index']);
+Route::get('donacije', [\App\Http\Controllers\DonacijeController::class, 'index']); // zbog ?mojeDonacije
+Route::post('donacije/{id}/slike', [\App\Http\Controllers\SlikeController::class, 'store']);
+Route::delete('donacije/{id}/slike/{slika_id}', [\App\Http\Controllers\SlikeController::class, 'destroy']);
 Route::resource('donacije',\App\Http\Controllers\DonacijeController::class)->except([
     'index', 'create', 'edit'
 ]);

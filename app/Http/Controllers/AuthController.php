@@ -54,4 +54,12 @@ class AuthController extends Controller
             'message'=>'logged out'
         ];
     }
+
+    public static function getLoggedInEmail()
+    {
+        if (!auth('sanctum')->check()) return null;
+        $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
+        return $user->email;
+
+    }
 }

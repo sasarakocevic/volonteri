@@ -91,3 +91,11 @@ Aplikacija ima 2 segmenta:
 
 - POST /api/akcije/{id}/prijava
 - POST /api/akcije/{id}/odjava
+
+
+## Razvoj 
+
+- https://laravel.com/docs/9.x/filesystem#the-public-disk
+  ```
+  php artisan storage:link
+  ```
