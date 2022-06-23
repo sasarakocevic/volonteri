@@ -26,4 +26,8 @@ class Akcija extends Model
         'status',
         'izvjestaj'
     ];
+
+    public function volonteri() {
+        return $this->hasMany(Volonter::class, "akcija_id");
+    }
 }

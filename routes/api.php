@@ -26,6 +26,9 @@ Route::resource('donacije',\App\Http\Controllers\DonacijeController::class)->exc
     'index', 'create', 'edit'
 ]);
 
+Route::post('akcije/{id}/prijava', [\App\Http\Controllers\AkcijeController::class, 'prijava']);
+Route::post('akcije/{id}/odjava', [\App\Http\Controllers\AkcijeController::class, 'odjava']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
     Route::resource('akcije',\App\Http\Controllers\AkcijeController::class)->except([

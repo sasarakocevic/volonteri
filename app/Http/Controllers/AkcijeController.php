@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Akcija;
 use App\Models\Donacija;
+use App\Models\User;
+use App\Models\Volonter;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -20,7 +22,7 @@ class AkcijeController extends Controller
             return response()->json(['error' => 'samo admin ima prvao'], 403);
         }
 
-        return Akcija::all();
+        return Akcija::with('volonteri')->get();
     }
 
     /**
@@ -114,5 +116,74 @@ class AkcijeController extends Controller
         $akcija->delete();
 
         return response()->json(['success' => 'uspjesno obrisana akcija'], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function prijava(Request $request, $akcija_id)
+    {
+        if (auth('sanctum')->check()) {
+            $this->validate($request, [
+                "email" => "prohibited",
+                "ime" => "prohibited",
+            ]);
+            $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
+            $request->merge([
+                'ime' => $user->name,
+                'email' => $user->email,
+            ]);
+        } else {
+            $this->validate($request, [
+                "email" => "required|email",
+                "ime" => "required|string|min:5",
+            ]);
+        }
+
+        $request->merge([
+            'akcija_id' => $akcija_id
+        ]);
+
+        $query = Volonter::query()->where('akcija_id',$akcija_id)->where('email',$request->get('email'));
+        if ($query->get()->count()>0){
+            return response()->json(['error' => 'vec prijavljen'], 400);
+        }
+
+        return Volonter::create($request->all());
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function odjava(Request $request, $akcija_id)
+    {
+        $email = "";
+        if (auth('sanctum')->check()) {
+            $this->validate($request, [
+                "email" => "prohibited"
+            ]);
+            $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
+            $email = $user->email;
+        } else {
+            $this->validate($request, [
+                "email" => "required|email",
+            ]);
+            $email =  $request->get('email');
+        }
+
+        $query = Volonter::query()->where('akcija_id',$akcija_id)->where('email',$email);
+
+        $deleted =- $query->delete();
+
+        if ($deleted==0){
+            return response()->json(['error' => 'nepostojeca prijava'], 404);
+        }
+        return response()->json(['success' => 'uspjesno odjavljeni']);
     }
 }
