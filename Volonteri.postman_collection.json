@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "9739ae0b-8d49-4104-aafd-90e5324d7f68",
+		"name": "Volonteri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Donacije",
+			"item": [
+				{
+					"name": "/donacije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|y6rq0wx48vQHVwLY6mEy0sGJUSdCPvPVTEvYZ6nA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"naslov\": \"fsdfd\",\n    \"lokacija\": \"sdfsfdfdsfd.   \",\n    \"opis\": \"oaaasdfjosdjfoisdj foidsj foijd sfoijds oifj dsofij sdoifj sdo\",\n    \"status\": \"AKTIVNA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/donacije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"donacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/donacije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/donacije?mojeDonacije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"donacije"
+							],
+							"query": [
+								{
+									"key": "mojeDonacije",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/donacije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"donator\": \"sdfdsdf@ssds.dd\",\n    \"id\": 12,\n        \"naslov\": \"fsdfd\",\n        \"lokacija\": \"sdfsfdfdsfd.\",\n        \"opis\": \"oaaasdfjosdjfoisdj foidsj foijd sfoijds oifj dsofij sdoifj sdo\",\n        \"status\": \"AKTIVNA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/donacije/3",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"donacije",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/donacije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/donacije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"donacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/donacije/{id}/slike",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|y6rq0wx48vQHVwLY6mEy0sGJUSdCPvPVTEvYZ6nA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"naslov\": \"fsdfd\",\n    \"lokacija\": \"sdfsfdfdsfd.   \",\n    \"opis\": \"oaaasdfjosdjfoisdj foidsj foijd sfoijds oifj dsofij sdoifj sdo\",\n    \"status\": \"AKTIVNA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/donacije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"donacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/donacije/slike",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/products",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"bojan\",\n    \"email\":\"sdfdsdf@ssds.dd\",\n    \"password\":\"fsdf\",\n    \"password_confirmation\":\"fsdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/register",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6|FOoMpqxW5SXLMZF7LxG6PWY3XzcUyDADWB8Wj5Ol",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/logout",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"logout"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sdfdsdf@ssds.dd\",\n    \"password\": \"fsdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/login",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Akcije",
+			"item": [
+				{
+					"name": "/akcije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|y6rq0wx48vQHVwLY6mEy0sGJUSdCPvPVTEvYZ6nA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"naslov\": \"fsdfd\",\n    \"opis\": \"sdfsfdfdsfdsdfdsfsdfsddsfsdfsd.\",\n    \"vrijeme\":\"2022-06-25 15:47:00\",\n    \"pozeljan_broj_volontera\":132,\n    \"status\": \"AKTIVNA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/akcije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/akcije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/akcije",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/akcije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"naslov\": \"fsdfd\",\n    \"opis\": \"sdfsfdfdsfdsdfdsfsdfsddsfsdfsd.\",\n    \"vrijeme\": \"2022-06-25 15:47:00\",\n    \"pozeljan_broj_volontera\": 132,\n    \"status\": \"ZAVRSENA\",\n    \"izvjestaj\": \"fasdfdfdfsdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/akcije/2",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/akcije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|8DsKIfoVwfUd4RfFzxXjbmuWODybtzdTnaza6a8C",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/akcije/2",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/akcije/{id}/prijava",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "=9|y6rq0wx48vQHVwLY6mEy0sGJUSdCPvPVTEvYZ6nA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ime\": \"bojan fdsf sdf d\",\n    \"email\": \"sdfdsdf@ssds.ddaadsf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/akcije/1/prijava",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije",
+								"1",
+								"prijava"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/akcije/{id}/odjava",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|y6rq0wx48vQHVwLY6mEy0sGJUSdCPvPVTEvYZ6nA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/akcije/1/odjava",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"akcije",
+								"1",
+								"odjava"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
