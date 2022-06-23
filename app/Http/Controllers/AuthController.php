@@ -55,6 +55,13 @@ class AuthController extends Controller
         ];
     }
 
+    public static function isLoggedInAdmin()
+    {
+        if (!auth('sanctum')->check()) return false;
+        $user = User::find(auth('sanctum')->user()->getAuthIdentifier());
+        return $user->isAdmin();
+    }
+
     public static function getLoggedInEmail()
     {
         if (!auth('sanctum')->check()) return null;

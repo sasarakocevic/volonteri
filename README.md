@@ -76,7 +76,7 @@ Aplikacija ima 2 segmenta:
     "naslov": "Naslov akcija",
     "opis": "Ovo je duzi <h1>opis</h1> akcije.",
     "vrijeme": "2022-06-01T08:37:59.981Z",
-    "brojVolontera": 5,
+    "pozeljanBrojVolontera": 5,
     "status": "aktivna", // aktivna | neaktivna | zavrsena
     "izvjestaj": "Izvjestaj koji postavlja administrator na zavrsenu akciju." // samo ako je status == zavrsena
 }

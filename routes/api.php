@@ -28,4 +28,7 @@ Route::resource('donacije',\App\Http\Controllers\DonacijeController::class)->exc
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::resource('akcije',\App\Http\Controllers\AkcijeController::class)->except([
+        'create', 'edit'
+    ]);
 });
